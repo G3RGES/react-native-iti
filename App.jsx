@@ -35,7 +35,7 @@ function MainTabs() {
         },
         tabBarActiveTintColor: '#ff7a2a',
         tabBarInactiveTintColor: '#999',
-        tabBarStyle: { height: 60, paddingBottom: 6 },
+        tabBarStyle: { height: 60, paddingBottom: 6, marginBottom: 30 },
       })}>
       <Bottom.Screen name="Home" component={HomeScreen} />
       <Bottom.Screen name="Search" component={SearchScreen} />
