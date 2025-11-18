@@ -7,7 +7,9 @@ export default function Onboarding2({ navigation }) {
     <SafeAreaView style={styles.container}>
       <View style={styles.card}>
         <Image
-          source={{ uri: 'https://i.imgur.com/2nCt3Sbl.png' }} // replace with your image
+          source={{
+            uri: 'https://images.unsplash.com/photo-1507808973436-a4ed7b5e87c9?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+          }} // replace with your image
           style={styles.image}
           resizeMode="contain"
         />
