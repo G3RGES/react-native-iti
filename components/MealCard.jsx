@@ -2,10 +2,14 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { Feather, AntDesign } from '@expo/vector-icons';
 
-export default function MealCard({ item, onAdd }) {
+export default function MealCard({ item, onAdd, onPress }) {
   return (
-    <View className="mb-4 overflow-hidden rounded-xl bg-white">
+    <TouchableOpacity
+      activeOpacity={0.9}
+      onPress={onPress}
+      className="mb-4 overflow-hidden rounded-xl bg-white">
       <Image source={{ uri: item.strMealThumb }} className="h-36 w-full" />
+
       <View className="p-3">
         <View className="flex-row justify-between">
           <View className="flex-1">
@@ -38,6 +42,6 @@ export default function MealCard({ item, onAdd }) {
           </View>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
