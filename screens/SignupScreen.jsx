@@ -25,14 +25,14 @@ export default function SignupScreen() {
           <View className="mt-4">
             <Text className="mb-2 text-xs font-bold text-[#666]">NAME</Text>
             <View className="rounded-lg bg-[#f1f6fb] p-3">
-              <TextInput editable={false} value="John doe" className="text-base text-[#333]" />
+              <TextInput editable={true} placeholder="John doe" className="text-base text-[#333]" />
             </View>
 
             <Text className="mb-2 mt-4 text-xs font-bold text-[#666]">EMAIL</Text>
             <View className="rounded-lg bg-[#f1f6fb] p-3">
               <TextInput
-                editable={false}
-                value="example@gmail.com"
+                editable={true}
+                placeholder="example@gmail.com"
                 className="text-base text-[#333]"
               />
             </View>
@@ -40,9 +40,9 @@ export default function SignupScreen() {
             <Text className="mb-2 mt-4 text-xs font-bold text-[#666]">PASSWORD</Text>
             <View className="flex-row items-center rounded-lg bg-[#f1f6fb] p-3">
               <TextInput
-                editable={false}
+                editable={true}
                 secureTextEntry
-                value="**********"
+                placeholder="**********"
                 className="flex-1 text-base text-[#333]"
               />
               <Ionicons name="eye-off-outline" size={20} color="#888" />
@@ -51,9 +51,9 @@ export default function SignupScreen() {
             <Text className="mb-2 mt-4 text-xs font-bold text-[#666]">RE-TYPE PASSWORD</Text>
             <View className="flex-row items-center rounded-lg bg-[#f1f6fb] p-3">
               <TextInput
-                editable={false}
+                editable={true}
                 secureTextEntry
-                value="**********"
+                placeholder="**********"
                 className="flex-1 text-base text-[#333]"
               />
               <Ionicons name="eye-off-outline" size={20} color="#888" />
