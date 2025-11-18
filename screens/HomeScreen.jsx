@@ -6,7 +6,7 @@ import MealCard from '../components/MealCard';
 import AddedModal from '../components/AddedModal';
 import axios from 'axios';
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
   const [meals, setMeals] = useState([]);
   const [query, setQuery] = useState('');
   const [refreshing, setRefreshing] = useState(false);
@@ -15,10 +15,8 @@ export default function HomeScreen() {
   async function getMeals() {
     try {
       setRefreshing(true);
-      //   const res = await axios.get('https://www.themealdb.com/api/json/v1/1/search.php?f=c');
-      const res = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?f=c');
-      const data = await res.json();
-      setMeals(data.meals);
+      const res = await axios.get('https://www.themealdb.com/api/json/v1/1/search.php?f=c');
+      setMeals(res.data.meals);
     } catch (err) {
       console.log(err);
       setMeals([]);
@@ -39,15 +37,19 @@ export default function HomeScreen() {
     ? meals.filter((m) => (m.strMeal ?? '').toLowerCase().includes(query.trim().toLowerCase()))
     : meals;
 
-  const categories = ['All', 'Burger', 'Pizza', 'Hot Dog', 'Dessert'];
-
   return (
     <SafeAreaView style={{ flex: 1 }} className="bg-[#eef3f6]">
       <FlatList
         data={displayed}
         keyExtractor={(item) => item.idMeal}
-        renderItem={({ item }) => <MealCard item={item} onAdd={() => setModalVisible(true)} />}
-        ListHeaderComponent={<Header query={query} setQuery={setQuery} categories={categories} />}
+        renderItem={({ item }) => (
+          <MealCard
+            item={item}
+            onAdd={() => setModalVisible(true)}
+            onPress={() => navigation.navigate('MealDetails', { item })}
+          />
+        )}
+        ListHeaderComponent={<Header query={query} setQuery={setQuery} />}
         refreshing={refreshing}
         onRefresh={refetch}
         showsVerticalScrollIndicator={false}
