@@ -25,7 +25,7 @@ export default function CartScreen({ navigation }) {
       const parsed = raw ? JSON.parse(raw) : [];
       setCart(parsed);
     } catch (err) {
-      console.warn(err);
+      console.log(err);
       setCart([]);
     } finally {
       setLoading(false);
