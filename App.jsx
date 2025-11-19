@@ -15,6 +15,7 @@ import LoginScreen from './screens/LoginScreen';
 import SignupScreen from './screens/SignupScreen';
 import SearchScreen from './screens/SearchScreen';
 import MealDetails from './screens/MealDetails';
+import { ThemeContextProvider } from 'context/ThemeContext';
 
 const Stack = createNativeStackNavigator();
 const Bottom = createBottomTabNavigator();
@@ -46,20 +47,22 @@ function MainTabs() {
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Onboarding1" screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Onboarding1" component={Onboarding1} />
-        <Stack.Screen name="Onboarding2" component={Onboarding2} />
-        <Stack.Screen name="Onboarding3" component={Onboarding3} />
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Signup" component={SignupScreen} />
-        <Stack.Screen name="Search" component={SearchScreen} />
-        <Stack.Screen name="MealDetails" component={MealDetails} />
+    <ThemeContextProvider>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Onboarding1" screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Onboarding1" component={Onboarding1} />
+          <Stack.Screen name="Onboarding2" component={Onboarding2} />
+          <Stack.Screen name="Onboarding3" component={Onboarding3} />
+          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="Signup" component={SignupScreen} />
+          <Stack.Screen name="Search" component={SearchScreen} />
+          <Stack.Screen name="MealDetails" component={MealDetails} />
 
-        {/* expose both route names so navigation.replace('Home') or navigation.replace('Main') work */}
-        <Stack.Screen name="Home" component={MainTabs} />
-        <Stack.Screen name="Main" component={MainTabs} />
-      </Stack.Navigator>
-    </NavigationContainer>
+          {/* expose both route names so navigation.replace('Home') or navigation.replace('Main') work */}
+          <Stack.Screen name="Home" component={MainTabs} />
+          <Stack.Screen name="Main" component={MainTabs} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </ThemeContextProvider>
   );
 }
