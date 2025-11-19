@@ -45,8 +45,8 @@ function MainTabs({ dark }) {
         tabBarInactiveTintColor: dark ? '#9aa2a8' : '#999',
         tabBarStyle: {
           height: 60,
-          paddingBottom: 6,
-          marginBottom: 30,
+          paddingBottom: 10,
+          marginBottom: 50,
           backgroundColor: dark ? '#0b0f15' : '#ffffff',
           borderTopColor: dark ? '#0b0f15' : '#e8e8e8',
         },
@@ -54,8 +54,8 @@ function MainTabs({ dark }) {
       <Bottom.Screen name="Home" component={HomeScreen} />
       <Bottom.Screen name="Search" component={SearchScreen} />
       <Bottom.Screen name="Login" component={LoginScreen} />
+      <Bottom.Screen name="Profile" component={EditProfileScreen} />
       <Bottom.Screen name="Cart" component={CartScreen} />
-      <Bottom.Screen name="profile" component={EditProfileScreen} />
     </Bottom.Navigator>
   );
 }
