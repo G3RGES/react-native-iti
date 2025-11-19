@@ -3,29 +3,24 @@
     "name": "Foody Recipes",
     "slug": "foody-recipes",
     "version": "1.0.0",
-
     "web": {
       "favicon": "./assets/favicon (2).png"
     },
-
     "experiments": {
       "tsconfigPaths": true
     },
-
     "plugins": [],
-
     "orientation": "portrait",
     "icon": "./assets/favicon (2).png",
-
     "userInterfaceStyle": "light",
-
     "splash": {
       "image": "./assets/splash (2).png",
       "resizeMode": "contain",
       "backgroundColor": "#eef3f6",
       "border": "none",
-
-      "assetBundlePatterns": ["**/*"],
+      "assetBundlePatterns": [
+        "**/*"
+      ],
       "ios": {
         "supportsTablet": true,
         "splash": {
@@ -46,6 +41,12 @@
         "resizeMode": "contain",
         "backgroundColor": "#eef3f6",
         "border": "none"
+      },
+      "package": "com.g3rges.foodyrecipes"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "86b48275-c98a-4488-b9c3-54ca153d6ad3"
       }
     }
   }
