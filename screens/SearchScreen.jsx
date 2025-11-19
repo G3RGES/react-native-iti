@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { View, Text, TextInput, FlatList, TouchableOpacity, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { AntDesign, Feather } from '@expo/vector-icons';
+import { theme } from 'context/ThemeContext';
 
 export default function SearchScreen({ navigation }) {
+  const { isDark } = useContext(theme);
+
   const [meals, setMeals] = useState([]);
   const [query, setQuery] = useState('');
   const [refreshing, setRefreshing] = useState(false);
@@ -60,22 +63,34 @@ export default function SearchScreen({ navigation }) {
   const renderCard = ({ item }) => {
     return (
       <TouchableOpacity
-        className="mb-4 w-[48%] overflow-hidden rounded-xl bg-white"
+        className="mb-4 w-[48%] overflow-hidden rounded-xl"
         activeOpacity={0.85}
-        onPress={() => navigation.navigate('MealDetails', { item })}>
-        <Image source={{ uri: item.strMealThumb }} className="h-28 w-full bg-gray-100" />
+        onPress={() => navigation.navigate('MealDetails', { item })}
+        style={{ backgroundColor: isDark ? '#0b0f15' : '#ffffff' }}>
+        <Image
+          source={{ uri: item.strMealThumb }}
+          className="h-28 w-full"
+          style={{ backgroundColor: isDark ? '#111827' : '#f3f4f6' }}
+        />
         <View className="p-3">
-          <Text numberOfLines={1} className="text-sm font-semibold text-slate-900">
+          <Text
+            numberOfLines={1}
+            className="text-sm font-semibold"
+            style={{ color: isDark ? '#fff' : '#0f172a' }}>
             {item.strMeal}
           </Text>
-          <Text numberOfLines={1} className="mt-1 text-xs text-gray-400">
+          <Text
+            numberOfLines={1}
+            className="mt-1 text-xs"
+            style={{ color: isDark ? '#9aa2a8' : '#94a3b8' }}>
             {item.strArea} • {item.strCategory}
           </Text>
         </View>
 
         <TouchableOpacity
-          className="absolute bottom-3 right-3 h-9 w-9 items-center justify-center rounded-full bg-orange-500 shadow"
-          onPress={() => navigation.navigate('MealDetails', { item })}>
+          className="absolute bottom-3 right-3 h-9 w-9 items-center justify-center rounded-full"
+          onPress={() => navigation.navigate('MealDetails', { item })}
+          style={{ backgroundColor: '#ff8a2b' }}>
           <AntDesign name="plus" size={18} color="#fff" />
         </TouchableOpacity>
       </TouchableOpacity>
@@ -83,20 +98,23 @@ export default function SearchScreen({ navigation }) {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-slate-50">
+    <SafeAreaView className="flex-1" style={{ backgroundColor: isDark ? '#0b0f15' : '#eef3f6' }}>
       <View className="p-4">
-        <View className="flex-row items-center rounded-xl bg-white p-3 shadow">
-          <Feather name="search" size={18} color="#9aa2a8" />
+        <View
+          className="flex-row items-center rounded-xl p-3"
+          style={{ backgroundColor: isDark ? '#111827' : '#ffffff' }}>
+          <Feather name="search" size={18} color={isDark ? '#9aa2a8' : '#9aa2a8'} />
           <TextInput
             value={query}
             onChangeText={setQuery}
             placeholder="Search meals..."
-            placeholderTextColor="#9aa2a8"
+            placeholderTextColor={isDark ? '#9aa2a8' : '#9aa2a8'}
             className="ml-3 flex-1 text-base"
+            style={{ color: isDark ? '#fff' : '#0f172a' }}
           />
           {query.length > 0 && (
             <TouchableOpacity onPress={() => setQuery('')} className="pl-2">
-              <Feather name="x" size={16} color="#9aa2a8" />
+              <Feather name="x" size={16} color={isDark ? '#9aa2a8' : '#9aa2a8'} />
             </TouchableOpacity>
           )}
         </View>
@@ -114,7 +132,7 @@ export default function SearchScreen({ navigation }) {
         onRefresh={onRefresh}
         ListEmptyComponent={() => (
           <View className="items-center py-8">
-            <Text className="text-gray-500">No meals found.</Text>
+            <Text style={{ color: isDark ? '#9aa2a8' : '#94a3b8' }}>No meals found.</Text>
           </View>
         )}
       />
